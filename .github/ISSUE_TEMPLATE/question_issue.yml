@@ -1,0 +1,31 @@
+name: 質問
+description: 機能や仕様に関する質問を挙げるissueテンプレート
+labels:
+  - question
+body:
+  - type: checkboxes
+    id: method
+    attributes:
+      label: 対象メソッド
+      description: 対象メソッドがある場合は選択してください
+      options:
+        - label: GET
+        - label: POST
+        - label: PUT
+        - label: DELETE
+
+  - type: input
+    attributes:
+      label: 対象機能
+      description: |
+        - APIエンドポイントや対象の機能がわかるように記述してください
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 詳細内容
+      description: |
+        - 質問内容がわかるよう, できるだけスクリーンショット等のエビデンスを添付して事実ベースで記載してください
+    validations:
+      required: true
