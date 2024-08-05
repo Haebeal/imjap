@@ -1,0 +1,12 @@
+name: その他
+description: その他機能に直接関わらないタスクのissueテンプレート
+labels:
+  - chore
+body:
+  - type: input
+    attributes:
+      label: タスク内容
+      description: |
+        - 対応する作業内容ががわかるように記載してください
+    validations:
+      required: true
