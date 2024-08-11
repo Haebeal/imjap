@@ -5,8 +5,13 @@ import { ImageService } from "~/service/image.service";
 export class ImageController {
   constructor(private readonly imageService: ImageService) {}
 
+  @Get(":id")
+  getImage(@Param() params) {
+    return this.imageService.getImageUrl(params.id);
+  }
+
   @Post()
-  async postImage(@Body() body) {
-    return await this.imageService.uploadImage(body.data);
+  postImage(@Body() body) {
+    return this.imageService.uploadImage(body.data);
   }
 }
