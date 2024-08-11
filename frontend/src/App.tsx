@@ -5,7 +5,7 @@ const App = () => {
   const [base64Image, setBase64Image] = useState<string | null>(null);
   const handleInputFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if(!files) {
+    if(!Array.isArray(files) || files.length < 1) {
       return;
     }
 
