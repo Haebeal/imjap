@@ -8,7 +8,7 @@ const App = () => {
       const reader = new FileReader();
       reader.onloadend = () => {
         if(reader.result) {
-          const base64String = reader.result?.toString();
+          const base64String = reader.result.toString();
           setBase64Image(base64String);
         }
       }
