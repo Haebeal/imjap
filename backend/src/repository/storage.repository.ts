@@ -15,6 +15,12 @@ export class StorageRepository {
     this.supabase = supabase;
   }
 
+  // ファイルIDからファイルのURLを取得するメソッド
+  getPublicUrl(id: string) {
+    const { data } = this.supabase.storage.from("images").getPublicUrl(id);
+    return data.publicUrl;
+  }
+
   // Base64でエンコードされたBlobをアップロードするメソッド
   async uploadFile(
     fileName: string,
@@ -27,12 +33,5 @@ export class StorageRepository {
         contentType,
       });
     return response;
-  }
-
-  // ファイルIDからURLを取得するメソッド
-  getPublicUrl(path: string) {
-    const { data } = this.supabase.storage.from("images").getPublicUrl(path);
-
-    return data.publicUrl;
   }
 }
