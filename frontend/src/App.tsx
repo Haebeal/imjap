@@ -5,12 +5,10 @@ const App = () => {
   const [base64Image, setBase64Image] = useState<string | null>(null);
   const handleInputFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if(!Array.isArray(files) || files.length < 1) {
+    if(files === null || files.length < 1) {
       return;
     }
-
-    const fileArray = Array.from(files);
-    fileArray.forEach((file) => {
+    for (const file of files) {
       const reader = new FileReader();
       reader.onloadend = () => {
         if(reader.result) {
@@ -18,8 +16,8 @@ const App = () => {
           setBase64Image(base64String);
         }
       }
-      reader.readAsDataURL(file);
-    });
+      reader.readAsDataURL(file);      
+    }
   }
 
   const hadleUpload = async () => {
