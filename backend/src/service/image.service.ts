@@ -20,7 +20,7 @@ export class ImageService {
   async uploadImage(data: string) {
     const fileName = randomUUID();
 
-    return await this.storageRepository.uploadFile(
+    return this.storageRepository.uploadFile(
       fileName,
       decode(data.replace(/^data:\w+\/\w+;base64,/, "")),
       data.slice(data.indexOf(":") + 1, data.indexOf(";"))

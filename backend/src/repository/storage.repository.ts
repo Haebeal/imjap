@@ -22,16 +22,9 @@ export class StorageRepository {
   }
 
   // Base64でエンコードされたBlobをアップロードするメソッド
-  async uploadFile(
-    fileName: string,
-    arrayBuffer: ArrayBuffer,
-    contentType: string
-  ) {
-    const response = await this.supabase.storage
-      .from("images")
-      .upload(fileName, arrayBuffer, {
-        contentType,
-      });
-    return response;
+  uploadFile(fileName: string, arrayBuffer: ArrayBuffer, contentType: string) {
+    return this.supabase.storage.from("images").upload(fileName, arrayBuffer, {
+      contentType,
+    });
   }
 }

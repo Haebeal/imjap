@@ -11,7 +11,7 @@ export class ImageController {
   }
 
   @Post()
-  async postImage(@Body() body) {
-    return await this.imageService.uploadImage(body.data);
+  postImage(@Body() body) {
+    return this.imageService.uploadImage(body.data);
   }
 }
