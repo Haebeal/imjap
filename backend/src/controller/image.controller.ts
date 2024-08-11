@@ -6,7 +6,7 @@ export class ImageController {
   constructor(private readonly imageService: ImageService) {}
 
   @Get(":id")
-  async getImage(@Param() params) {
+  getImage(@Param() params) {
     return this.imageService.getImageUrl(params.id);
   }
 
