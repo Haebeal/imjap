@@ -24,7 +24,7 @@ const App = () => {
     };
 
     try {
-      const response = await fetch('https://hoge.net/upload', {
+      const response = await fetch('http://localhost:3000/images', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
