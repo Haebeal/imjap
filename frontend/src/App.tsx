@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import './App.css'
 
 const App = () => {
   const [base64Image, setBase64Image] = useState<string | null>(null);
