@@ -10,6 +10,13 @@ export class ImageService {
     private readonly storageRepository: StorageRepository
   ) {}
 
+  getImageUrl(id: string) {
+    return {
+      id,
+      url: this.storageRepository.getPublicUrl(id),
+    };
+  }
+
   async uploadImage(data: string) {
     const fileName = randomUUID();
 
