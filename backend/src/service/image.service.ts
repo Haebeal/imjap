@@ -10,11 +10,9 @@ export class ImageService {
     private readonly storageRepository: StorageRepository
   ) {}
 
-  getImageUrl(id: string) {
-    return {
-      id,
-      url: this.storageRepository.getPublicUrl(id),
-    };
+  async downloadFile(id: string) {
+    const blob = await this.storageRepository.downloadFileById(id);
+    return blob;
   }
 
   uploadImage(data: string) {

@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
@@ -15,10 +15,15 @@ export class StorageRepository {
     this.supabase = supabase;
   }
 
-  // ファイルIDからファイルのURLを取得するメソッド
-  getPublicUrl(id: string) {
-    const { data } = this.supabase.storage.from("images").getPublicUrl(id);
-    return data.publicUrl;
+  // IDのファイルをダウンロードするメソッド
+  async downloadFileById(id: string) {
+    const { data, error } = await this.supabase.storage
+      .from("images")
+      .download(id);
+    if (error) {
+      throw new HttpException(error.message, HttpStatus.NOT_FOUND);
+    }
+    return data;
   }
 
   // Base64でエンコードされたBlobをアップロードするメソッド
