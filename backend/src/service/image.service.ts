@@ -10,7 +10,7 @@ export class ImageService {
     private readonly storageRepository: StorageRepository
   ) {}
 
-  async downloadFile(id: string) {
+  async downloadImage(id: string) {
     const blob = await this.storageRepository.downloadFileById(id);
     return blob;
   }
