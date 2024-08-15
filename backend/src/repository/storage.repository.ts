@@ -26,6 +26,13 @@ export class StorageRepository {
     return data;
   }
 
+  /**
+   * Base64でエンコードされたBlobをアップロードするメソッド
+   * @param fileName ファイル名
+   * @param arrayBuffer アップロードするファイルのArrayBufferオブジェクト
+   * @param contentType アップロードするファイルのメディア種別
+   * @returns
+   */
   uploadFile(fileName: string, arrayBuffer: ArrayBuffer, contentType?: string) {
     return this.supabase.storage.from("images").upload(fileName, arrayBuffer, {
       contentType,
