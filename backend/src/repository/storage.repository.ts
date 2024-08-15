@@ -15,11 +15,10 @@ export class StorageRepository {
     this.supabase = supabase;
   }
 
-  // IDのファイルをダウンロードするメソッド
-  async downloadFileById(id: string) {
+  async downloadFileById(fileName: string) {
     const { data, error } = await this.supabase.storage
       .from("images")
-      .download(id);
+      .download(fileName);
     if (error) {
       throw new HttpException(error.message, HttpStatus.NOT_FOUND);
     }
