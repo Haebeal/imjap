@@ -15,6 +15,11 @@ export class StorageRepository {
     this.supabase = supabase;
   }
 
+  /**
+   * ファイルをダウンロードするメソッド
+   * @param fileName ファイル名
+   * @returns ファイルのBlobオブジェクト
+   */
   async downloadFileById(fileName: string) {
     const { data, error } = await this.supabase.storage
       .from("images")
