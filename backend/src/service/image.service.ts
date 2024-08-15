@@ -11,6 +11,17 @@ export class ImageService {
   ) {}
 
   /**
+   * 画像一覧を取得するメソッド
+   * @returns 画像一覧
+   */
+  async getImageList() {
+    const images = await this.storageRepository.getFileList();
+    return images.map((image) => ({
+      id: image.name,
+    }));
+  }
+
+  /**
    * 画像をダウンロードするメソッド
    * @param id 画像ID
    * @returns 画像のBlobオブジェクト
