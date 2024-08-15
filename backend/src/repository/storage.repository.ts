@@ -6,8 +6,8 @@ import { createClient, SupabaseClient } from "@supabase/supabase-js";
 export class StorageRepository {
   private supabase: SupabaseClient;
 
-  // Supabaseのインスタンス作成
   constructor(private configService: ConfigService) {
+    // Supabaseのインスタンスを作成
     const supabase = createClient(
       this.configService.get<string>("SUPABASE_URL"),
       this.configService.get<string>("SUPABASE_ANON_KEY")
