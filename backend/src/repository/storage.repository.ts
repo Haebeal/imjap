@@ -16,6 +16,23 @@ export class StorageRepository {
   }
 
   /**
+   * ファイル一覧を取得するメソッド
+   * @param limit 取得数の上限
+   * @returns ファイル情報の配列
+   */
+  async getFileList(limit?: number) {
+    const { data, error } = await this.supabase.storage
+      .from("images")
+      .list(undefined, {
+        limit,
+      });
+    if (error) {
+      throw new HttpException(error.message, HttpStatus.SERVICE_UNAVAILABLE);
+    }
+    return data;
+  }
+
+  /**
    * ファイルをダウンロードするメソッド
    * @param fileName ファイル名
    * @returns ファイルのBlobオブジェクト
