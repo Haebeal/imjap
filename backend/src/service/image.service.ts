@@ -10,6 +10,11 @@ export class ImageService {
     private readonly storageRepository: StorageRepository
   ) {}
 
+  /**
+   * 画像をダウンロードするメソッド
+   * @param id 画像ID
+   * @returns 画像のBlobオブジェクト
+   */
   async downloadImage(id: string) {
     const blob = await this.storageRepository.downloadFileById(id);
     return blob;
