@@ -15,7 +15,13 @@ export class ImageService {
     return blob;
   }
 
+  /**
+   * 画像をアップロードするメソッド
+   * @param data
+   * @returns
+   */
   uploadImage(data: string) {
+    // 画像IDとしてランダムなUUIDを設定
     const fileName = randomUUID();
     return this.storageRepository.uploadFile(
       fileName,
